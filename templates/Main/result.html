@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% extends 'Main/main.html' %}
+{% load static %}
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Result</title>
+    </head>
+    <style>
+        .stock-1{
+            border: 1px solid #fff;
+            box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+        }
+        .stock-2{
+            border: 1px solid #fff;
+            border-radius: 1px;
+            box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+        }
+        .row1 {
+            margin-top: 20px;
+            border: 1px solid #fff;
+            border-radius: 1px;
+            box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+        }
+        .container-fluid-1 {
+            width: 1250px;
+            margin: auto;
+            box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+        }
+    </style>
+    <body>
+         <div class="container-fluid pt-4 px-4">
+                <div class=" row1 row g-4">
+                    <div class="col-sm-12 col-xl-10">
+                        <div class="text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Information</h6>
+                                <a href="https://finance.yahoo.com/quote/{{ticker_value}}?p={{ticker_value}}">Show More</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <td>Symbol</td>
+                                            <td>{{Symbol}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>{{Name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Last Sale</td>
+                                            <td>{{Last_Sale}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Net Change</td>
+                                            <td>{{Net_Change}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Percent Change</td>
+                                            <td>{{Percent_Change}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Market Capital</td>
+                                            <td>{{Market_Cap}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Country</td>
+                                            <td>{{Country}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>IPO Year</td>
+                                            <td>{{IPO_Year}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Volume</td>
+                                            <td>{{Volume}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sector</td>
+                                            <td>{{Sector}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Industry</td>
+                                            <td>{{Industry}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+         </div>
+
+         <br>
+         <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="stock-1 bg-white text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Recent Stock price of {{ticker_value}}</h6>
+                                <a href="https://finance.yahoo.com/quote/{{ticker_value}}/chart?p={{ticker_value}}#">
+                                    Show More
+                                </a>
+                            </div>
+                            {% block Left_Plot %}
+
+                                {% autoescape off %}
+                                    {{ plot_div }}
+                                {% endautoescape %}
+
+                            {% endblock Left_Plot %}
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="stock-2 bg-white text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Predicted Stock price of {{ticker_value}} for next {{number_of_days}} days</h6>
+                            </div>
+                            {% block Right_Plot %}
+
+                                {% autoescape off %}
+                                    {{ plot_div_pred }}
+                                {% endautoescape %}
+
+                            {% endblock Right_Plot %}
+                        </div>
+                    </div>
+                </div>
+         </div>
+         <br>
+         <div class="container-fluid-1 pt-4 px-4">
+             <div class="rounded-top p-4">
+                 <div class="row">
+                     <div class="col-12 col-sm-6 text-center text-sm-start">
+                         &copy; <a href="#">Stockpile</a>, All Right Reserved.
+                     </div>
+                     <div class="col-12 col-sm-6 text-center text-sm-end">
+                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                         Designed By <a href="https://github.com/pramo22">Pramod Gaikwad</a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <script src="{% static 'js/result.js' %}"></script>
+    </body>
+    </html>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'Main/main.html' %}
+{% load static %}
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>About</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    </head>
+    <style>
+        .about-wrapper{
+            width: 1250px;
+            margin: auto;
+            box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+            margin-top: 30px;
+        }
+        p{
+            font-size: 20px;
+            padding: 20px;
+            font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+        }
+        .container-fluid-1 {
+            width: 1250px;
+            margin: auto;
+            box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+        }
+    </style>
+    <body>
+          <div class="about-wrapper">
+              <h3 style="padding: 30px">About Website!</h3>
+              <br>
+              <p>Stockpile is an online web-based stock prediction and stock exchange website, which shows that the tickers and stock values of every stock tickers and predict the future prediction. This website predicts the future perspective which is dependent on the past perception and generates the result is in a form of plotting graphs and classifying the data into the table. The base of this website is that it is working on the basis of some machine learning model such as a Long-Short term memory (LSTM) model which is an Recurrent Neural Network(RNN) that is able to remember the information over a period of time, it has making extremely useful for predicting stock price RNN  are well time-series data step-by-step making internal state. The website is based on bridging the gap between website application framework and some machine learning models. The data has taken from <a href="https://finance.yahoo.com/">finanace.yahoo.com</a>The updated stock data on website also with the prediction put the data such as tickers name and number of days to predict next number of days of stock tickers data and plot on the graph. The data shows in a table is in a form of Open, Close, Adj Close, High, Low and Volume .This will shows how the tickers vales will become in future to help the people to invest their money on appropriate stocks. </p>
+          </div>
+    <br>
+     <div class="container-fluid-1 pt-4 px-4">
+         <div class="rounded-top p-4">
+             <div class="row">
+                 <div class="col-12 col-sm-6 text-center text-sm-start">
+                     &copy; <a href="#">Stockpile</a>, All Right Reserved.
+                 </div>
+                 <div class="col-12 col-sm-6 text-center text-sm-end">
+                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                     Designed By <a href="https://github.com/pramo22">Pramod Gaikwad</a>
+                 </div>
+             </div>
+         </div>
+     </div>
+    <br>
+    </body>
+    </html>
+{% endblock %}

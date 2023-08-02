@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% extends 'Main/main.html' %}
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>StockTicker</title>
+    </head>
+    <style>
+        .tickers-wrapper{
+            width: 1250px;
+            margin-left: 50px;
+            border: 1px solid #fff;
+            box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+            margin-top: 40px;
+        }
+        .table-responsive{
+            width: 1200px;
+            margin-left: 25px;
+        }
+        .container-fluid-1 {
+            width: 1250px;
+            margin: auto;
+            box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+        }
+    </style>
+    <body>
+         <div class="tickers-wrapper">
+             <div class="container-fluid pt-4 px-4">
+                 <div class="text-center rounded p-4">
+                     <div class="d-flex align-items-center justify-content-between mb-4">
+                         <h6 class="mb-0">All Tickers</h6>
+                         <a href="https://finance.yahoo.com/trending-tickers">Show All</a>
+                     </div>
+                 </div>
+             </div>
+             <br>
+             <div class="table-responsive">
+                 <table class="table text-start align-middle table-bordered  mb-0">
+                     <thead>
+                     <tr class="text-black">
+                         <th>Tickers Symbol</th>
+                         <th>Tickers Name</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                         {% if stock_tickers %}
+                             {% for i in stock_tickers %}
+                                 <tr class="text-black">
+                                     <td>{{ i.Symbol }}</td>
+                                     <td>{{ i.Name }}</td>
+                                 </tr>
+                             {% endfor %}
+                         {% endif %}
+                     </tbody>
+                 </table>
+             </div>
+         </div>
+         <br>
+
+         <div class="container-fluid-1 pt-4 px-4">
+             <div class="rounded-top p-4">
+                 <div class="row">
+                     <div class="col-12 col-sm-6 text-center text-sm-start">
+                         &copy; <a href="#">Stockpile</a>, All Right Reserved.
+                     </div>
+                     <div class="col-12 col-sm-6 text-center text-sm-end">
+                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                         Designed By <a href="https://github.com/pramo22">Pramod Gaikwad</a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+    <br>
+    </body>
+    </html>
+{% endblock %}

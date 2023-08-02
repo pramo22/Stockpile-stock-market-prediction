@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% extends 'Main/main.html' %}
+{% load static %}
+{% load static %}
+{% block content %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    </head>
+    <style>
+        .container-fluid{
+            box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+            width: 1300px;
+        }
+        .container-fluid-1{
+            box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+            width: 1300px;
+            margin: auto;
+        }
+    </style>
+    <body>
+          <br>
+          <br>
+          <div class="container-fluid-1 col-sm-12 col-xl-12">
+              <div class="text-center rounded p-4">
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                      <h6 class="mb-0">Active Stocks</h6>
+                      <a class="btn btn-warning" style="color: #fff;text-decoration: none;" href="">Show All</a>
+                  </div>
+                  {% block Left_Plot %}
+                      {% autoescape off %}
+                          {{ plot_div_left }}
+                      {% endautoescape %}
+                  {% endblock Left_Plot %}
+              </div>
+          </div>
+          <br>
+          <div class="container-fluid pt-4 px-4">
+              <div class="text-center rounded p-4">
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                      <h6 class="mb-0">Recent Stocks</h6>
+                      <a href="https://finance.yahoo.com/trending-tickers">Show All</a>
+                  </div>
+                  <div class="table-responsive">
+                      <table class="table text-start align-middle table-bordered table-hover mb-0">
+                          <thead>
+                          <tr class="text-black">
+                              <th scope="col">Ticker</th>
+                              <th scope="col">Open</th>
+                              <th scope="col">High</th>
+                              <th scope="col">Low</th>
+                              <th scope="col">Close</th>
+                              <th scope="col">Adj. Close</th>
+                              <th scope="col">Volume</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {% if recent_stocks %}
+                              {% for stock in recent_stocks %}
+                                  <tr>
+                                      <td>{{stock.Ticker}}</td>
+                                      <td>{{stock.Open}}</td>
+                                      <td>{{stock.High}}</td>
+                                      <td>{{stock.Low}}</td>
+                                      <td>{{stock.Close}}</td>
+                                      <td>{{stock.Adj_Close}}</td>
+                                      <td>{{stock.Volume}}</td>
+                                  </tr>
+                                {% endfor %}
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+          <br>
+          <div class="container-fluid-1 pt-4 px-4">
+              <div class="rounded-top p-4">
+                  <div class="row">
+                      <div class="col-12 col-sm-6 text-center text-sm-start">
+                          &copy; <a href="#">Stockpile</a>, All Right Reserved.
+                      </div>
+                      <div class="col-12 col-sm-6 text-center text-sm-end">
+                          <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                          Designed By <a href="https://github.com/pramo22">Pramod Gaikwad</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <br>
+    </body>
+    </html>
+{% endblock %}
